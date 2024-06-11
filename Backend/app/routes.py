@@ -2,8 +2,7 @@ from app import app, db
 from flask import Flask, jsonify
 from flask_cors import CORS
 from app.models import Application,Categories,Resource
-from app.helperfunctions import create_categories, get_lat_long,scrape_img_from_provided_website
-
+from app.helperfunctions import create_categories, get_lat_long,scrape_img_from_provided_website,seedResources
 CORS(app)
 
 #Generates SQL lite DB
@@ -12,6 +11,7 @@ def initDB(*args, **kwargs):
     if app.got_first_request:
         db.create_all()
         create_categories()
+        seedResources()
 
 #Test route
 @app.route("/test", methods=["POST", "GET"])
@@ -43,8 +43,6 @@ def postapplications(request):
     db.session.commit()
     return jsonify({"message": "Application created"}), 200
 
-
-
 #get categories for drop down lists
 @app.route("/getcategories", methods=["GET"])
 def getcategories():
@@ -54,7 +52,7 @@ def getcategories():
         categories_list.append({'id': category.id, 'name': category.name})
     return jsonify(categories_list), 200
 
-#get applications for appove or deny
+#get applications 
 @app.route("/getapplications", methods=["GET"])
 def getapplications():
     applications = Application.query.all()
@@ -73,6 +71,8 @@ def getapplications():
     return jsonify(applications_list), 200
 
 
+
+#approve application logic
 @app.route("/approveapplication<id>", methods=["POST"])
 def approveapplication(id):
     application = Application.query.get(id)
@@ -94,9 +94,41 @@ def approveapplication(id):
         reasource.lat = coordinates[0]
         reasource.lon = coordinates[1]
     
-    reasource.img = scrape_img_from_provided_website(application.website)
+    img = scrape_img_from_provided_website(application.website)
+    if img:
+        reasource.img = img
+    else:
+        reasource.img = "https://aspr.hhs.gov/at-risk/PublishingImages/At-Risk-Categories.png"
     db.session.add(reasource)
     db.session.delete(application)
     db.session.commit()
     return jsonify({"message": "Application approved"}), 200
 
+#Get resources
+@app.route("/getresources", methods=["GET"])
+def getresources():
+    resources = Resource.query.all()
+    resources_list = []
+    for resource in resources:
+        resources_list.append({
+            'id': resource.id,
+            'name': resource.name,
+            'description': resource.description,
+            'address': resource.address,
+            'phoneNumber': resource.phoneNumber,
+            'email': resource.email,
+            'website': resource.website,
+            'category_id': resource.category_id,
+            'lat': resource.lat,
+            'lon': resource.lon,
+            'img': resource.img
+        })
+    return jsonify(resources_list), 200
+
+#Get resource by id
+@app.route("/getreasource<id>", methods=["get"])
+def getreasource(id):
+    resource = Resource.query.get(id)
+    if not resource:
+        return jsonify({"message": "Resource not found"}), 404
+    return jsonify(resource), 200
