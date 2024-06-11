@@ -11,7 +11,7 @@ in cli:
 ##Running
 Backend:
     cd backend
-    flask run
+    flask run (python -m flask run if on Windows)
 
 frontend: 
     open new terminal
