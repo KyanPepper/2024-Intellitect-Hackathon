@@ -1,0 +1,6 @@
+Flask==2.3.3
+Flask-SQLAlchemy
+python-dotenv
+flask_cors
+requests
+bs4
