@@ -12,11 +12,11 @@
             </div>
             <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone"required>
             </div>
             <div class="form-group">
                 <label for="website">Link:</label>
-                <input type="tel" id="url" name="website">
+                <input type="tel" id="url" name="website" required>
             </div>
             <div class="form-group">
                 <label for="message">Message:</label>
@@ -32,30 +32,30 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #333;
-            color: #fff;
+            background-color: #f4f4f4;
+            color: #333;
             margin: 0;
             padding: 0;
         }
         .container {
             width: 50%;
             margin: auto;
-            background: #444;
+            background: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
-            border-radius: 10px;
+            border-radius: 5px;
         }
         h1 {
             text-align: center;
-            color: #33ffff;
+            color: #333;
         }
         .form-group {
             margin-bottom: 15px;
         }
         .form-group label {
             display: block;
-            color: #33ffff;
+            color: #333;
         }
         .form-group input,
         .form-group textarea {
@@ -63,24 +63,24 @@
             padding: 10px;
             box-sizing: border-box;
             margin-top: 5px;
-            border: 2px solid #33ffff;
-            background-color: #555;
-            color: #fff;
-            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #333;
+            border-radius: 3px;
         }
         .form-group button {
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #33ffff;
-            color: #333;
+            background-color: #333;
+            color: #fff;
             border: none;
             cursor: pointer;
             margin-top: 10px;
-            border-radius: 5px;
+            border-radius: 3px;
             font-weight: bold;
         }
         .form-group button:hover {
-            background-color: #1acfcf;
+            background-color: #555;
         }
     </style>
