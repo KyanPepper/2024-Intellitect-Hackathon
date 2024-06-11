@@ -34,7 +34,7 @@
 
     <div class="additional-info">
         <p>Additional ways to help</p>
-        <a href="#">Link1</a> | <a href="#">Link2</a> | <a href="#">Link3</a>
+        <a href="https://intellitect.com/">Link1</a> | <a href="https://intellitect.com/">Link2</a> | <a href="https://intellitect.com/">Link3</a>
     </div>
 
 </body>
@@ -60,18 +60,19 @@
         .ctaSub{
             font-size: 15px;
         }
-        .container {
+        .container { 
             width: 50%;
             margin: auto;
             background: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Adjusted shadow properties */
             border-radius: 5px;
             margin-top: 20px;
         }
         h1 {
             text-align: center;
             color: #333;
+            font-weight: bold;
         }
         .form-group {
             margin-bottom: 15px;
@@ -92,6 +93,31 @@
             border-radius: 3px;
             resize: none;
         }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="url"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #333;
+            border-radius: 3px;
+            resize: none;
+            transition: all 0.3s ease; /* Add transition */
+        }
+
+        .form-group input[type="text"]:hover,
+        .form-group input[type="email"]:hover,
+        .form-group input[type="tel"]:hover,
+        .form-group input[type="url"]:hover,
+        .form-group textarea:hover {
+            transform: scale(1.025); /* Scale up on hover */
+            transition: all 0.5s ease; /* Add transition */
+        }
         .form-group button {
             display: block;
             width: 100%;
@@ -103,6 +129,13 @@
             margin-top: 10px;
             border-radius: 3px;
             font-weight: bold;
+            transition: all 0.3s ease; /* Add transition */
+        }
+
+        .form-group button:hover {
+            background-color: #555;
+            transform: scale(1.025); /* Scale up on hover */
+            transition: all 0.5s ease; /* Add transition */
         }
         .screening-info {
             font-size: smaller;
