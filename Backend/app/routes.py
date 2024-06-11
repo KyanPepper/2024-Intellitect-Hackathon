@@ -1,8 +1,8 @@
 from app import app, db
 from flask import Flask, jsonify
 from flask_cors import CORS
-from app.models import Application,Categories
-from app.helperfunctions import create_categories
+from app.models import Application,Categories,Resource
+from app.helperfunctions import create_categories, get_lat_long,scrape_img_from_provided_website
 
 CORS(app)
 
@@ -42,4 +42,61 @@ def postapplications(request):
     db.session.add(application)
     db.session.commit()
     return jsonify({"message": "Application created"}), 200
+
+
+
+#get categories for drop down lists
+@app.route("/getcategories", methods=["GET"])
+def getcategories():
+    categories = Categories.query.all()
+    categories_list = []
+    for category in categories:
+        categories_list.append({'id': category.id, 'name': category.name})
+    return jsonify(categories_list), 200
+
+#get applications for appove or deny
+@app.route("/getapplications", methods=["GET"])
+def getapplications():
+    applications = Application.query.all()
+    applications_list = []
+    for application in applications:
+        applications_list.append({
+            'id': application.id,
+            'organization': application.organization,
+            'description': application.description,
+            'address': application.address,
+            'phoneNumber': application.phoneNumber,
+            'email': application.email,
+            'website': application.website,
+            'category_id': application.category_id
+        })
+    return jsonify(applications_list), 200
+
+
+@app.route("/approveapplication<id>", methods=["POST"])
+def approveapplication(id):
+    application = Application.query.get(id)
+    if not application:
+        return jsonify({"message": "Application not found"}), 404
+    
+    reasource = Resource(
+        name=application.organization,
+        description=application.description,
+        address=application.address,
+        phoneNumber=application.phoneNumber,
+        email=application.email,
+        website=application.website,
+        category_id=application.category_id
+    )
+    
+    coordinates = get_lat_long(application.address)
+    if coordinates:
+        reasource.lat = coordinates[0]
+        reasource.lon = coordinates[1]
+    
+    reasource.img = scrape_img_from_provided_website(application.website)
+    db.session.add(reasource)
+    db.session.delete(application)
+    db.session.commit()
+    return jsonify({"message": "Application approved"}), 200
 

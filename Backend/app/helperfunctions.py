@@ -1,6 +1,7 @@
 from app import db
 from app.models import Categories
 import requests
+from bs4 import BeautifulSoup
 ##Creates vurerable catorgories
 def create_categories():
     if Categories.query.count() > 0:
@@ -33,3 +34,18 @@ def get_lat_long(address):
     if len(data) > 0:
         return float(data[0].get("lat", 0)), float(data[0].get("lon", 0))
 
+def scrape_img_from_provided_website(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        return None
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+    img_tags = soup.find_all('img')
+
+    if img_tags:
+        first_img_src = img_tags[0].get('src')
+        if not first_img_src.startswith('http'):
+            first_img_src = url + first_img_src
+        return first_img_src
+
+    return None
