@@ -15,7 +15,7 @@
     </header>
     <div class="flex items-center justify-center text-center p-4 mt-8">
         <p class="text-lg text-gray-700 max-w-xl">The community of Spokane cares deeply about providing resources for those who need a little extra support.
-        Whether you are looking for financial aid, food, shelter, healthcare, or other,
+        Whether you are looking for financial aid, food, shelter, healthcare, or some other type of assistance,
         you've come to the right spot.</p>
     </div>
     <div class="flex-container mx-auto mt-8 grid grid-cols-6 gap-4">
