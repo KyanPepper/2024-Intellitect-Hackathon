@@ -1,2 +1,2 @@
-from app import db,create_app
+from app import db
 from config import Config
