@@ -10,7 +10,7 @@
     <header class="relative w-full h-64">
         <img src="https://static.spokanecity.org/photos/2013/03/03/spokane/16x10/Full/spokane.jpg" alt="Banner Image" class="w-full h-full object-cover">
         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <h1 class="text-4xl font-bold text-white">Welcome to [Name Here]</h1>
+            <h1 class="text-4xl font-bold text-white">Welcome to SpokaneOutreach</h1>
         </div>
     </header>
     <div class="flex items-center justify-center text-center p-4 mt-8">
@@ -53,7 +53,7 @@
         <div style="background-color: #682e44; color: white" class="p-4 flex flex-col items-center justify-center h-32">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" viewBox="0 0 20 20" fill="currentColor">
             </svg>
-            <p class="text-lg font-semibold text-center">Rehabilitation Centers</p>
+            <p class="text-lg font-semibold text-center">Other</p>
         </div>
     </div>
     <div class="max-w-lg mx-auto mt-10 text-center">
