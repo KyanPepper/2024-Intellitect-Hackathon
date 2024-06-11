@@ -14,6 +14,7 @@ Backend:
     flask run
 
 frontend: 
+    open new terminal
     cd frontend
     npm run dev
 
