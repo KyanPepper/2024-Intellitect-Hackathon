@@ -58,30 +58,66 @@ def seedResources():
     resource1 = Resource(
         name="House of Charity",
         description="House of Charity is a non-profit organization that provides food, shelter, and support services to those in need.",
-        address="32 W Pacific Ave, Spokane, WA 99201",
+        address="32 W Pacific Ave\nSpokane, WA 99201",
         phoneNumber="509-624-7821",
         email="Frontdesk@cceasternwa.org",
         website="https://www.houseofcharity.org/",
         category_id=4,
         lon=-117.4234,
         lat=47.6573,
-        img="https://www.houseofcharity.org/wp-content/uploads/2019/06/HOC-Logo-Color.png",
+        img="https://bloximages.newyork1.vip.townnews.com/kxly.com/content/tncms/assets/v3/editorial/5/ce/5ced6f53-6e72-5869-9d67-4270a1b55f1d/63bc93acbea42.image.jpg?crop=1024%2C538%2C0%2C19&resize=1024%2C538&order=crop%2Cresize",
     )
     db.session.add(resource1)
+
     reasource2 = Resource(
         name="Union Gospel Mission",
         description="Union Gospel Mission is a non-profit organization that provides food, shelter, and support services to those in need.",
-        address="1224 E Trent Ave, Spokane, WA 99202",
+        address="1224 E Trent Ave\nSpokane, WA 99202",
         phoneNumber="509-535-8510",
         email="uniongospelmission@gmail.com",
         website="https://www.ugmspokane.org/",
         category_id=4,
         lon=-117.3987,
         lat=47.6639,
-        img="https://www.ugmspokane.org/wp-content/uploads/2020/08/UGM-Logo-Color.png",
+        img="https://www.homelessshelterdirectory.org/gallery/941__zkl.jpg",
     )
     db.session.add(reasource2)
-    reasource3 = Resource(name = "Spokane Resource Center", description = "Spokane Resource Center is a non-profit organization that provides food, shelter, and support services to those in need.", address = "130 S Arthur St, Spokane, WA 99202", phoneNumber = "509-456-7111", email = "", website = "https://www.spokaneresourcecenter.org/", category_id = 7, lon = -117.4133, lat = 47.6543, img = "https://www.spokaneresourcecenter.org/wp-content/uploads/2020/07/Spokane-Resource-Center-Logo-Color.png")
+
+    reasource3 = Resource(name = "Spokane Resource Center",
+                          description = "Spokane Resource Center is a non-profit organization that provides food, shelter, and support services to those in need.",
+                          address = "130 S Arthur St\nSpokane, WA 99202",
+                          phoneNumber = "509-456-7111",
+                          email = "",
+                          website = "https://www.spokaneresourcecenter.org/",
+                          category_id = 7,
+                          lon = -117.4133,
+                          lat = 47.6543,
+                          img = "https://www.spokaneresourcecenter.org/wp-content/uploads/2020/07/Spokane-Resource-Center-Logo-Color.png")
     db.session.add(reasource3)
+
+    reasource4 = Resource(name = "Aging and Long Term Care of Eastern Washington",
+                          description = "ALTCEW helps you find resources for elderly individuals seeking to make independent living more sustainable with information regarding caregivers, in-home care, care transitions, medication management, and more.\n\nThe Rock Pointe Office, in particular, offers most of the main services associated with this organization (unlike the Post Street Office).",
+                          address = "316 W Boone Ave, Suite 260\nSpokane, WA 99201",
+                          phoneNumber = "509-458-2509",
+                          email = "",
+                          website = "https://www.altcew.org/",
+                          category_id = 1,
+                          lon = -117.415830,
+                          lat = 47.668770,
+                          img = "https://unicoprop.com/wp-content/uploads/2018/01/RockPointe2_Exterior_2014_3511-1200x893.jpg")
+    db.session.add(reasource4)
+
+    reasource5 = Resource(name = "Aging and Long Term Care of Eastern Washington",
+                          description = "ALTCEW helps you find resources for elderly individuals seeking to make independent living more sustainable with information regarding caregivers, in-home care, care transitions, medication management, and more.\n\nThe Rock Pointe Office, in particular, offers most of the main services associated with this organization (unlike the Post Street Office).",
+                          address = "1222 N. Post Street\nSpokane, WA 99201",
+                          phoneNumber = "509-458-2509",
+                          email = "",
+                          website = "https://www.altcew.org/",
+                          category_id = 1,
+                          lon = -117.423170,
+                          lat = 47.668980,
+                          img = "https://www.altcew.org/wp-content/uploads/sites/24/2020/05/ALTCEW-building-exterior-Web-Page-scaled.jpg")
+    db.session.add(reasource5)
+
     db.session.commit()
     return
