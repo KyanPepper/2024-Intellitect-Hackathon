@@ -20,7 +20,7 @@ import("./+page").PageData;
         lon={project.lon}
         lat={project.lat}
         img={project.img}
+        tags={project.tags}
     />
     {/each}
-
 </div>
