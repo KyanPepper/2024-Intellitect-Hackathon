@@ -89,7 +89,7 @@
 </div>
 
 <div class="additional-info">
-    <p>"To me it would not seem that a Steward who faithfully surrenders his charge is diminished in love or in honour."</p>
+    <p>"To me it would not seem that a Steward who faithfully surrenders his charge is not diminished in love or in honour."</p>
 </div>
 
 <style>
