@@ -46,7 +46,7 @@
     /**
    * @type {any}
    */
-    //export let tags;
+    export let tags;
    
      const categoryNames = {
     1: "Elderly",

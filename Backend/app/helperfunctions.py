@@ -104,7 +104,7 @@ def seedResources():
                           category_id = 1,
                           lon = -117.415830,
                           lat = 47.668770,
-                          img = "https://unicoprop.com/wp-content/uploads/2018/01/RockPointe2_Exterior_2014_3511-1200x893.jpg")
+                          img = "https://unicoprop.com/wp-content/uploads/2018/01/RockPointe2_Exterior_2014_3511-1200x893.jpg"),
     db.session.add(reasource4)
 
     reasource5 = Resource(name = "Aging and Long Term Care of Eastern Washington",
