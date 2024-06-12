@@ -89,7 +89,7 @@
 
     <div>
       {#if img}
-        <img src={img} alt="Image" class="mt-2 rounded-lg" />
+        <img src={img} alt="Image" class="mt-2 rounded-lg" width="60%"/>
       {/if}
     </div>
     <br>

@@ -22,5 +22,4 @@ import("./+page").PageData;
         img={project.img}
     />
     {/each}
-
 </div>
