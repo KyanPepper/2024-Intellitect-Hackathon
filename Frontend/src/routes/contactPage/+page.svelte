@@ -8,19 +8,19 @@
         <h1>Organization Info</h1>
         <form action="submit_form.php" method="post">
             <div class="form-group">
-                <input class="border-color-change" type="text" id="name" name="name" placeholder="Name" required>
+                <input type="text" id="name" name="name" placeholder="Name" required>
             </div>
             <div class="form-group">
-                <input class="border-color-change" type="email" id="email" name="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <input class="border-color-change" type="tel" id="phone" name="phone" placeholder="Phone" required>
+                <input type="tel" id="phone" name="phone" placeholder="Phone" required>
             </div>
             <div class="form-group">
-                <input class="border-color-change" type="url" id="website" name="website" placeholder="Website" required>
+                <input type="url" id="website" name="website" placeholder="Website" required>
             </div>
             <div class="form-group">
-                <textarea class="border-color-change" id="message" name="message" rows="5" placeholder="Your Why" required></textarea>
+                <textarea id="message" name="message" rows="5" placeholder="Your Why" required></textarea>
             </div>
             <div class="form-group">
                 <button type="submit">Submit</button>

@@ -14,17 +14,3 @@
   .fade-in {
     animation: fadeIn 0.3s ease-in-out;
   }
-
-
-@keyframes colorChange {
-    0%   { border-color: red; }
-    25%  { border-color: blue; }
-    50%  { border-color: green; }
-    100% { border-color: purple; }
-}
-
-.border-color-change {
-    animation: colorChange 5s infinite;
-    border-width: 1px;
-    border-style: solid; 
-}
