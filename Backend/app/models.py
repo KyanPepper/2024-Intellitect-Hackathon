@@ -18,7 +18,7 @@ class Categories(db.Model):
 class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     organization = db.Column(db.String(100), nullable=True)
-    description = db.Column(db.String(100), nullable=True)
+    description = db.Column(db.String(1000), nullable=True)
     address = db.Column(db.String(100), nullable=True)
     phoneNumber = db.Column(db.String(100), nullable=True)
     email = db.Column(db.String(100), nullable=True)
