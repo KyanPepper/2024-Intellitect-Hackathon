@@ -3,18 +3,51 @@
 
     const backendprefix = "http://127.0.0.1:5000/";
 
+    // @ts-ignore
     let data = [];
-
     // Example of an axios request
     axios.get(backendprefix + "getresources")
         .then((response) => {
             data = response.data;
-            console.log(response);
-            console.log(data);
         })
         .catch((error) => {
             console.error(error);
         });
+
+        const pendingApplications = [
+            {
+                organization: "Organization A",
+                description: "Description A",
+                address: "Address A",
+                phoneNumber: "123-456-7890",
+                email: "orga@example.com",
+                website: "www.orga.com",
+                category_id: 1,
+                category: { id: 1, name: "Category A" } 
+            },
+            {
+                organization: "Organization B",
+                description: "Description B",
+                address: "Address B",
+                phoneNumber: "987-654-3210",
+                email: "orgb@example.com",
+                website: "www.orgb.com",
+                category_id: 2,
+                category: { id: 2, name: "Category B" } 
+            },
+            // Add more pending applications as needed
+        ];
+
+    // @ts-ignore
+    function addApplicant() {
+        axios.post(backendprefix + "approveapplication")
+            .then((response) => {
+                
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }
 </script>
 
 <div class="cta">
@@ -36,33 +69,23 @@
                 </div>
             {/each}
         </div>
-
         <div class="divider">
             <hr>
         </div>
-
         <div class="pending-list">
             <h2>Pending Organizations</h2>
             <div class="seperator">
                 <hr>
             </div>
-            <div class="pending-org">
-                <span>Organization 4</span>
-                <button class="check-mark-button green">&#10004;</button>
-                <button class="check-mark-button red">X</button>
-            </div>
-            <div class="pending-org">
-                <span>Organization 5</span>
-                <button class="check-mark-button green">&#10004;</button>
-                <button class="check-mark-button red">X</button>
-            </div>
-            <div class="pending-org">
-                <span>Organization 6</span>
-                <button class="check-mark-button green">&#10004;</button>
-                <button class="check-mark-button red">X</button>
+                {#each pendingApplications as pendingOrg}
+                    <div class="pending-org">
+                        <span>{pendingOrg.organization}</span>
+                        <button class="check-mark-button green">&#10004;</button>
+                        <button class="check-mark-button red">X</button>
+                    </div>
+                {/each}
             </div>
         </div>
-    </div>
 </div>
 
 <div class="additional-info">
