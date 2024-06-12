@@ -20,6 +20,12 @@ def testpost():
     #response and status code (200 is good 400 is bad request)
     return jsonify(response), 200
 
+@app.route("/seedandclear", methods=["GET"])
+def seed():
+    db.drop_all()
+    create_categories()
+    seedResources()
+    return jsonify({"message": "DB Cleared and Seeded"}), 200
 
 @app.route("/", methods=["POST", "GET"])
 def createuser():
