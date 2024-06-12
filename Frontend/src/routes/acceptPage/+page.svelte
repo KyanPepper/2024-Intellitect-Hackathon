@@ -6,13 +6,16 @@
 <body>
     <div class="cta">
         <h2 class="ctaTitle">Organization Monitor</h2>
-        <p class="ctaSub">Use to add Organizations to map and system</p>
+        <p class="ctaSub">Use to add Organizations to map and system.</p>
     </div>
 
     <div class="content">
         <div class="container">
             <div class="org-list">
                 <h2>Current Organizations</h2>
+                <div class="seperator">
+                    <hr>
+                </div>
                 <div class="org">
                     <span>Organization 1</span>
                     <button class="check-mark-button red">X</button>
@@ -34,6 +37,9 @@
             
             <div class="pending-list">
                 <h2>Pending Organizations</h2>
+                <div class="seperator">
+                    <hr>
+                </div>
                 <div class="pending-org">
                     <span>Organization 4</span>
                     <button class="check-mark-button green">&#10004;</button>
@@ -54,14 +60,14 @@
     </div>
 
     <div class="additional-info">
-        <p>Cool info and stuff</p>
+        <p>"To me it would not seem that a Steward who faithfully surrenders his charge is diminished in love or in honour."</p>
     </div>
 
 </body>
 
 <style>
         /* Basic CSS for demonstration purposes */
-        body, html {
+        body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -72,6 +78,9 @@
             align-items: center;
             flex-direction: column;
             height: 100%;
+            margin: auto;
+            padding: 20px;
+            margin-top: 20px;
         }
         .cta {
             background-color: #333;
@@ -93,21 +102,39 @@
             flex-grow: 1;
             width: 100%;
         }
+        .org:hover,
+        .pending-org:hover {
+            transform: scale(1.1); /* Enlarge on hover */
+            transition: transform 0.3s ease; /* Add smooth transition */
+        }
+        .org-list .org,
+        .pending-list .pending-org {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            transition: transform 0.3s ease; /* Add transition for smooth scaling */
+        }
+
+        .org:hover,
+        .pending-org:hover {
+            transform: scale(1.1); /* Enlarge on hover */
+        }
         .org-list, .pending-list {
             flex-basis: 45%;
             margin: 10px;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 2px solid #ccc; /* Increased border size */
+            border-radius: 10px; /* Rounded corners */
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added box shadow */
         }
         .org-list h2, .pending-list h2 {
             font-size: 1.5em;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-bottom: 10px;
+            font-weight: normal;
+            margin-bottom: 2px;
         }
         .org-list .org, .pending-list .pending-org {
+            margin-top: 5px;
             margin-bottom: 10px;
             font-size: 1.2em;
         }
@@ -118,20 +145,26 @@
         }
         .divider hr {
             border: none;
-            border-top: 1px solid #ccc;
-            width: 50%;
+            border-top: 1px solid #333;
+            width: 100%;
+        }
+        .seperator {
+            width: 100%;
+        }
+        .seperator hr {
+            border-top: .5px solid #333;
+            width: 100%;
         }
         .check-mark-button {
             display: inline-block;
-            width: 30px;
-            height: 30px;
+            width: 23px;
+            height: 23px;
             border: none;
             border-radius: 50%;
             text-align: center;
-            font-size: 16px;
-            line-height: 30px;
+            font-size: 14px;
+            line-height: 23px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
             margin: 0 5px; /* Added margin */
         }
         .check-mark-button.green {
@@ -143,15 +176,18 @@
             color: white;
         }
         .additional-info {
-            flex-shrink: 0; /* Prevent additional-info from shrinking */
             flex-grow: 1; /* Let additional-info grow to fill remaining space */
             width: 100%; /* Make sure it spans the entire width */
             text-align: center;
             color: #fff;
             margin-top: auto; /* Push it to the bottom */
+            margin-bottom: auto; /* Reset margin bottom to ensure it fills the remaining space */
+            padding: 20px; /* Add padding for better appearance */
             background-color: #333;
         }
         .additional-info p {
             margin-bottom: 10px;
+            color:light-gray;
+            font-style: italic;
         }
 </style>
