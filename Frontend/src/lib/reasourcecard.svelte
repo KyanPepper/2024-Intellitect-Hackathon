@@ -46,7 +46,7 @@
     /**
    * @type {any}
    */
-    //export let tags;
+    export let tags;
    
      const categoryNames = {
     1: "Elderly",
@@ -89,10 +89,10 @@
 
     <div>
       {#if img}
-        <img src={img} alt="Image" class="mt-2 rounded-lg" />
+        <img src={img} alt="Image" class="mt-2 rounded-lg" width="60%"/>
       {/if}
     </div>
-
+    <br>
       <p class="text-gray-800">Address: {address}</p>
       <p class="text-gray-800">Phone: {phoneNumber}</p>
       <p class="text-gray-800">Email: {email}</p>
