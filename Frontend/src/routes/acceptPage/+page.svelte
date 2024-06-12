@@ -1,33 +1,39 @@
 <script>
   import axios from "axios";
-
+  import { onMount } from "svelte";
   const backendprefix = "http://127.0.0.1:5000/";
 
-  // @ts-ignore
-  let data = [];
-  // Example of an axios request
-  axios
-    .get(backendprefix + "getresources")
-    .then((response) => {
-      data = response.data;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
 
-    /**
-   * @type {any[]}
-   */
-    let pendingApplications = [];
-  // Example of an axios request
-  axios
-    .get(backendprefix + "getapplications")
-    .then((response) => {
-      pendingApplications = response.data;
-    })
-    .catch((error) => {
+  let data = [];
+  let pendingApplications = [];
+  let password = '';
+
+
+  async function getPasswordAndGetData() {
+    try {
+      const response = await axios.get(`${backendprefix}password/${password}`);
+      if (response.status === 200) {
+        // Password correct, fetch data
+        await getData();
+      } else {
+        // Password incorrect, show denial message
+        console.log("Access Denied");
+      }
+    } catch (error) {
       console.error(error);
-    });
+    }
+  }
+
+  async function getData() {
+    try {
+      const response1 = await axios.get(`${backendprefix}getresources`);
+      const response2 = await axios.get(`${backendprefix}getapplications`);
+      data = response1.data;
+      pendingApplications = response2.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 
   function addApplicant(id) {
@@ -50,6 +56,15 @@
 
 </script>
 
+<div class="content">
+    <div>
+      <h2>Enter Password:</h2>
+      <input type="password" bind:value={password} placeholder="Enter password" />
+      <button on:click={getPasswordAndGetData}>Submit</button>
+    </div>
+</div>
+  
+{#if data.length > 0}
 <div class="cta">
   <h2 class="ctaTitle">Organization Monitor</h2>
   <p class="ctaSub">Use to add Organizations to map and system.</p>
@@ -91,6 +106,11 @@
 <div class="additional-info">
     <p>"To me it would not seem that a Steward who faithfully surrenders his charge is diminished in love or in honour." </p>
 </div>
+{:else}
+      <p class="content"> Loading...</p>
+    {/if}
+    
+
 
 <style>
   /* Basic CSS for demonstration purposes */

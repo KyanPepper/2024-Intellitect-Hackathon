@@ -208,3 +208,9 @@ def getreasource(fid):
         'img': resource.img
     }
     return jsonify(jsonresource), 200
+
+@app.route("/password/<password>", methods=["GET"])
+def getpassword(password):
+    if password == "123":
+        return jsonify({"message": "good to go"}), 200
+    return jsonify({"message": "not good"}), 400
