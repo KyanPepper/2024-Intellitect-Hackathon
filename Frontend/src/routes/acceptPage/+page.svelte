@@ -1,95 +1,77 @@
 <script>
+    import axios from "axios";
 
+    const backendprefix = "http://127.0.0.1:5000/";
 
-import axios from "axios";
-const backendprefix = "http://127.0.0.1:5000/"
+    let data = [];
 
-let data
-
-//Example of a axios request
-
-  axios.get(backendprefix + "getresources")
-  .then((response) => {
-    data = response.data;
-    console.log(response);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-
+    // Example of an axios request
+    axios.get(backendprefix + "getresources")
+        .then((response) => {
+            data = response.data;
+            console.log(response);
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 </script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organization Applications</title>
-</head>
-<body>
-    <div class="cta">
-        <h2 class="ctaTitle">Organization Monitor</h2>
-        <p class="ctaSub">Use to add Organizations to map and system.</p>
-    </div>
+<div class="cta">
+    <h2 class="ctaTitle">Organization Monitor</h2>
+    <p class="ctaSub">Use to add Organizations to map and system.</p>
+</div>
 
-    <div class="content">
-        <div class="container">
-            <div class="org-list">
-                <h2>Current Organizations</h2>
-                <div class="seperator">
-                    <hr>
-                </div>
-                <div class="org">
-                    <span>jk</span>
-                    <button class="check-mark-button red">X</button>
-                </div>
-                <div class="org">
-                    <span>Organization 2</span>
-                    <button class="check-mark-button red">X</button>
-                </div>
-                <div class="org">
-                    <span>Organization 3</span>
-
-                    <button class="check-mark-button red">X</button>
-                </div>
-            </div>
-            
-            <div class="divider">
+<div class="content">
+    <div class="container">
+        <div class="org-list">
+            <h2>Current Organizations</h2>
+            <div class="seperator">
                 <hr>
             </div>
-            
-            <div class="pending-list">
-                <h2>Pending Organizations</h2>
-                <div class="seperator">
-                    <hr>
-                </div>
-                <div class="pending-org">
-                    <span>Organization 4</span>
-                    <button class="check-mark-button green">&#10004;</button>
+            {#each data as org}
+                <div class="org">
+                    <span>{org.name}</span>
                     <button class="check-mark-button red">X</button>
                 </div>
-                <div class="pending-org">
-                    <span>Organization 5</span>
-                    <button class="check-mark-button green">&#10004;</button>
-                    <button class="check-mark-button red">X</button>
-                </div>
-                <div class="pending-org">
-                    <span>Organization 6</span>
-                    <button class="check-mark-button green">&#10004;</button>
-                    <button class="check-mark-button red">X</button>
-                </div>
+            {/each}
+        </div>
+
+        <div class="divider">
+            <hr>
+        </div>
+
+        <div class="pending-list">
+            <h2>Pending Organizations</h2>
+            <div class="seperator">
+                <hr>
+            </div>
+            <div class="pending-org">
+                <span>Organization 4</span>
+                <button class="check-mark-button green">&#10004;</button>
+                <button class="check-mark-button red">X</button>
+            </div>
+            <div class="pending-org">
+                <span>Organization 5</span>
+                <button class="check-mark-button green">&#10004;</button>
+                <button class="check-mark-button red">X</button>
+            </div>
+            <div class="pending-org">
+                <span>Organization 6</span>
+                <button class="check-mark-button green">&#10004;</button>
+                <button class="check-mark-button red">X</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="additional-info">
-        <p>"To me it would not seem that a Steward who faithfully surrenders his charge is diminished in love or in honour."</p>
-    </div>
-
-</body>
+<div class="additional-info">
+    <p>"To me it would not seem that a Steward who faithfully surrenders his charge is diminished in love or in honour."</p>
+</div>
 
 <style>
-        /* Basic CSS for demonstration purposes */
-        body {
+    /* Basic CSS for demonstration purposes */
+    body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -213,3 +195,4 @@ let data
             font-style: italic;
         }
 </style>
+
