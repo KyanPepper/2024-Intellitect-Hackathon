@@ -77,10 +77,6 @@
         .form-group {
             margin-bottom: 15px;
         }
-        .form-group label {
-            display: block;
-            color: #333;
-        }
         .form-group input,
         .form-group textarea {
             width: 100%;

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -87,4 +86,4 @@
         <a href="map" class="block w-full bg-blue-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">Map of Resources</a>
     </div> 
     </body>
-    </html>
+</html>
