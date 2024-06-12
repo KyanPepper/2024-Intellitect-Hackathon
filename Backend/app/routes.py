@@ -1,9 +1,11 @@
 from app import app, db
-from flask import Flask, jsonify
+from flask import Flask, jsonify,request,make_response
 from flask_cors import CORS
 from app.models import Application,Categories,Resource
-from app.helperfunctions import create_categories, get_lat_long,scrape_img_from_provided_website,seedResources
+from app.helperfunctions import create_categories, get_lat_long,scrape_img_from_provided_website,seedResources,seed_applications
+
 CORS(app)
+
 
 #Generates SQL lite DB
 @app.before_request
@@ -11,6 +13,7 @@ def initDB(*args, **kwargs):
     if app.got_first_request:
         db.create_all()
         create_categories()
+        seed_applications()
         seedResources()
 
 #Test route
@@ -25,6 +28,7 @@ def seed():
     db.drop_all()
     create_categories()
     seedResources()
+    seed_applications()
     return jsonify({"message": "DB Cleared and Seeded"}), 200
 
 @app.route("/", methods=["POST", "GET"])
@@ -33,21 +37,39 @@ def createuser():
     #response and status code (200 is good 400 is bad request)
     return jsonify(response), 200
 
-@app.route("/postapplications", methods=["POST"])
-def postapplications(request):
-    data = request.json
-    application = Application(
-        organization=data.get("organization"),
-        description=data.get("description"),
-        address=data.get("address"),
-        phoneNumber=data.get("phoneNumber"),
-        email=data.get("email"),
-        website=data.get("website"),
-        category_id=data.get("category_id")
-    )
-    db.session.add(application)
-    db.session.commit()
-    return jsonify({"message": "Application created"}), 200
+
+
+@app.route("/postapplications", methods=["POST", "OPTIONS"])
+def postapplications():
+    if request.method == "POST":
+        data = request.json
+        application = Application(
+            organization=data.get("organization"),
+            description=data.get("description"),
+            address=data.get("address"),
+            phoneNumber=data.get("phoneNumber"),
+            email=data.get("email"),
+            website=data.get("website"),
+            category_id=data.get("category_id"),
+            tags=data.get("tags")
+        )
+        db.session.add(application)
+        db.session.commit()
+        response = jsonify({"message": "Application created"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response, 200
+        
+    elif(request.method == "OPTIONS"):
+        response = make_response()
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "*")
+        response.headers.add("Access-Control-Allow-Methods", "*")
+        return response, 200
+    
+    return jsonify({"message": "Application not created"}), 400
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 #get categories for drop down lists
 @app.route("/getcategories", methods=["GET"])
@@ -72,7 +94,8 @@ def getapplications():
             'phoneNumber': application.phoneNumber,
             'email': application.email,
             'website': application.website,
-            'category_id': application.category_id
+            'category_id': application.category_id,
+            'tags': application.tags
         })
     return jsonify(applications_list), 200
 
@@ -92,7 +115,8 @@ def approveapplication(id):
         phoneNumber=application.phoneNumber,
         email=application.email,
         website=application.website,
-        category_id=application.category_id
+        category_id=application.category_id,
+        tags=application.tags
     )
     
     coordinates = get_lat_long(application.address)
@@ -109,6 +133,17 @@ def approveapplication(id):
     db.session.delete(application)
     db.session.commit()
     return jsonify({"message": "Application approved"}), 200
+
+
+@app.route("/deleteapplication/<id>", methods=["DELETE"])
+def deleteapplication(id):
+    application = Application.query.filter_by(id=id).first()
+    if not application:
+        return jsonify({"message": "Application not found"}), 404
+    db.session.delete(application)
+    db.session.commit()
+    return jsonify({"message": "Application deleted"}), 200
+
 
 #Get resources
 @app.route("/getresources", methods=["GET"])
@@ -127,6 +162,7 @@ def getresources():
             'category_id': resource.category_id,
             'lat': resource.lat,
             'lon': resource.lon,
+            'tags': resource.tags,
             'img': resource.img
         })
     return jsonify(resources_list), 200
@@ -148,6 +184,7 @@ def getresourcesbycategory(category_id):
             'category_id': resource.category_id,
             'lat': resource.lat,
             'lon': resource.lon,
+            'tags': resource.tags,
             'img': resource.img
         })
     return jsonify(resources_list), 200
@@ -169,6 +206,7 @@ def getreasource(fid):
         'category_id': resource.category_id,
         'lat': resource.lat,
         'lon': resource.lon,
+        'tags': resource.tags,
         'img': resource.img
     }
     return jsonify(jsonresource), 200

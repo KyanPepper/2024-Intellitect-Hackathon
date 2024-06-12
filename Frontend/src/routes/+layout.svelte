@@ -23,6 +23,7 @@
         <div class="hidden md:flex items-center space-x-1">
           <a href="/map" class="py-5 px-3 text-gray-700 hover:text-gray-900">Map</a>
           <a href="/contactPage" class="py-5 px-3 text-gray-700 hover:text-gray-900">Add Your Organization</a>
+          <a href="/acceptPage" class="py-5 px-3 text-gray-700 hover:text-gray-900">Accept Organizations</a>
         </div>
       </div>
 
