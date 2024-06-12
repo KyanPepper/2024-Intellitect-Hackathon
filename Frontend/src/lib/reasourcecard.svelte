@@ -92,7 +92,7 @@
         <img src={img} alt="Image" class="mt-2 rounded-lg" />
       {/if}
     </div>
-
+    <br>
       <p class="text-gray-800">Address: {address}</p>
       <p class="text-gray-800">Phone: {phoneNumber}</p>
       <p class="text-gray-800">Email: {email}</p>
