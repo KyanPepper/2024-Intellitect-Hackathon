@@ -5,11 +5,11 @@
     <title>Intro Banner with Overlay Title</title>
     <link href="/dist/output.css" rel="stylesheet">
 </head>
-<body style="background-color: #F8F8F8;">
+<body class="fade-in" style="background-color: #F8F8F8;">
     <header class="relative w-full h-64">
         <img src="https://static.spokanecity.org/photos/2013/03/03/spokane/16x10/Full/spokane.jpg" alt="Banner Image" class="w-full h-full object-cover">
         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <h1 class="fade-in text-4xl font-bold text-white">Welcome to SpokaneOutreach</h1>
+            <h1 class="text-4xl font-bold text-white">Welcome to SpokaneOutreach</h1>
         </div>
     </header>
     <div class="flex items-center justify-center text-center p-4 mt-8">
