@@ -5,7 +5,7 @@
         <p class="ctaSub">Fill the form out below for your to get involved!</p>
     </div>
 
-    <div class="container">
+<div class="container">
     <h1>Organization Info</h1>
     <form action="submit_form.php" method="post">
         <div class="form-group">
