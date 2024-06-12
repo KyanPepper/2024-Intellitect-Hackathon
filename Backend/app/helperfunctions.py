@@ -52,6 +52,7 @@ def scrape_img_from_provided_website(url):
 
 
 def seedResources():
+    #todo add real images
     if Resource.query.count() > 0:
         return
     resource1 = Resource(
