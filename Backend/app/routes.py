@@ -139,8 +139,13 @@ def getresourcesbycategory(category_id):
             'phoneNumber': resource.phoneNumber,
             'email': resource.email,
             'website': resource.website,
-            'category_id': resource
+            'category_id': resource.category_id,
+            'lat': resource.lat,
+            'lon': resource.lon,
+            'img': resource.img
         })
+    return jsonify(resources_list), 200
+
 
 #Get reasource by id
 @app.route("/getreasource/<fid>", methods=["GET"])
