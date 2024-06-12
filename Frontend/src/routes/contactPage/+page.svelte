@@ -2,7 +2,7 @@
 
     <div class="cta">
         <h2 class="ctaTitle">Join the Cause</h2>
-        <p class="ctaSub">Fill the form out below for your to get involved!</p>
+        <p class="ctaSub">Fill the form out below to get involved!</p>
     </div>
 
 <div class="container">
