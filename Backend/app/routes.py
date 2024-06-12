@@ -73,7 +73,7 @@ def getapplications():
 
 
 #approve application logic
-@app.route("/approveapplication<id>", methods=["POST"])
+@app.route("/approveapplication/<id>", methods=["POST"])
 def approveapplication(id):
     application = Application.query.get(id)
     if not application:
@@ -125,10 +125,39 @@ def getresources():
         })
     return jsonify(resources_list), 200
 
-#Get resource by id
-@app.route("/getreasource<id>", methods=["get"])
-def getreasource(id):
-    resource = Resource.query.get(id)
-    if not resource:
-        return jsonify({"message": "Resource not found"}), 404
-    return jsonify(resource), 200
+#Get resources by category
+@app.route("/getresourcesbycategory/<category_id>", methods=["GET"])
+def getresourcesbycategory(category_id):
+    resources = Resource.query.filter_by(category_id=category_id).all()
+    resources_list = []
+    for resource in resources:
+        resources_list.append({
+            'id': resource.id,
+            'name': resource.name,
+            'description': resource.description,
+            'address': resource.address,
+            'phoneNumber': resource.phoneNumber,
+            'email': resource.email,
+            'website': resource.website,
+            'category_id': resource
+        })
+
+#Get reasource by id
+@app.route("/getreasource/<fid>", methods=["GET"])
+def getreasource(fid):
+    ##Broken
+    resource = Resource.query.filter_by(id=fid).first()
+    jsonresource = {
+        'id': resource.id,
+        'name': resource.name,
+        'description': resource.description,
+        'address': resource.address,
+        'phoneNumber': resource.phoneNumber,
+        'email': resource.email,
+        'website': resource.website,
+        'category_id': resource.category_id,
+        'lat': resource.lat,
+        'lon': resource.lon,
+        'img': resource.img
+    }
+    return jsonify(jsonresource), 200
