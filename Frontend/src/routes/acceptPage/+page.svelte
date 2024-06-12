@@ -1,3 +1,25 @@
+<script>
+
+
+import axios from "axios";
+const backendprefix = "http://127.0.0.1:5000/"
+
+let data
+
+//Example of a axios request
+
+  axios.get(backendprefix + "getresources")
+  .then((response) => {
+    data = response.data;
+    console.log(response);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +39,7 @@
                     <hr>
                 </div>
                 <div class="org">
-                    <span>Organization 1</span>
+                    <span>jk</span>
                     <button class="check-mark-button red">X</button>
                 </div>
                 <div class="org">
