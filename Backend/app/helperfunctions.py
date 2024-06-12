@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import random
 
+
 ##Creates vurerable catorgories
 def create_categories():
     if Categories.query.count() > 0:
@@ -52,7 +53,7 @@ def scrape_img_from_provided_website(url):
 
 
 def seedResources():
-    #todo add real images
+    # todo add real images
     if Resource.query.count() > 0:
         return
     resource1 = Resource(
@@ -85,45 +86,50 @@ def seedResources():
     )
     db.session.add(reasource2)
 
-    reasource3 = Resource(name = "Spokane Resource Center",
-                          description = "Spokane Resource Center is a non-profit organization that provides food, shelter, and support services to those in need.",
-                          address = "130 S Arthur St\nSpokane, WA 99202",
-                          phoneNumber = "509-456-7111",
-                          email = "",
-                          website = "https://www.spokaneresourcecenter.org/",
-                          category_id = 7,
-                          lon = -117.4133,
-                          lat = 47.6543,
-                          img = "https://www.spokaneresourcecenter.org/wp-content/uploads/2020/07/Spokane-Resource-Center-Logo-Color.png")
+    reasource3 = Resource(
+        name="Spokane Resource Center",
+        description="Spokane Resource Center is a non-profit organization that provides food, shelter, and support services to those in need.",
+        address="130 S Arthur St Spokane, WA 99202",
+        phoneNumber="509-456-7111",
+        email="",
+        website="https://www.spokaneresourcecenter.org/",
+        category_id=7,
+        lon=-117.4133,
+        lat=47.6543,
+        img="https://www.spokaneresourcecenter.org/wp-content/uploads/2020/07/Spokane-Resource-Center-Logo-Color.png",
+    )
     db.session.add(reasource3)
 
-    reasource4 = Resource(name = "Aging and Long Term Care of Eastern Washington",
-                          description = "ALTCEW helps you find resources for elderly individuals seeking to make independent living more sustainable with information regarding caregivers, in-home care, care transitions, medication management, and more.\n\nThe Rock Pointe Office, in particular, offers most of the main services associated with this organization (unlike the Post Street Office).",
-                          address = "316 W Boone Ave, Suite 260\nSpokane, WA 99201",
-                          phoneNumber = "509-458-2509",
-                          email = "",
-                          website = "https://www.altcew.org/",
-                          category_id = 1,
-                          lon = -117.415830,
-                          lat = 47.668770,
-                          img = "https://unicoprop.com/wp-content/uploads/2018/01/RockPointe2_Exterior_2014_3511-1200x893.jpg"),
+    reasource4 = Resource(
+        name="Aging and Long Term Care of Eastern Washington",
+        description="ALTCEW helps you find resources for elderly individuals seeking to make independent living more sustainable with information regarding caregivers, in-home care, care transitions, medication management, and more.\n\nThe Rock Pointe Office, in particular, offers most of the main services associated with this organization (unlike the Post Street Office).",
+        address="316 W Boone Ave, Suite 260 Spokane, WA 99201",
+        phoneNumber="509-458-2509",
+        email="",
+        website="https://www.altcew.org/",
+        category_id=1,
+        lon=-117.415830,
+        lat=47.668770,
+        img="https://unicoprop.com/wp-content/uploads/2018/01/RockPointe2_Exterior_2014_3511-1200x893.jpg",
+    )
     db.session.add(reasource4)
 
-    reasource5 = Resource(name = "Aging and Long Term Care of Eastern Washington",
-                          description = "ALTCEW helps you find resources for elderly individuals seeking to make independent living more sustainable with information regarding caregivers, in-home care, care transitions, medication management, and more.\n\nThe Rock Pointe Office, in particular, offers most of the main services associated with this organization (unlike the Post Street Office).",
-                          address = "1222 N. Post Street\nSpokane, WA 99201",
-                          phoneNumber = "509-458-2509",
-                          email = "",
-                          website = "https://www.altcew.org/",
-                          category_id = 1,
-                          lon = -117.423170,
-                          lat = 47.668980,
-                          img = "https://www.altcew.org/wp-content/uploads/sites/24/2020/05/ALTCEW-building-exterior-Web-Page-scaled.jpg")
+    reasource5 = Resource(
+        name="Aging and Long Term Care of Eastern Washington",
+        description="ALTCEW helps you find resources for elderly individuals seeking to make independent living more sustainable with information regarding caregivers, in-home care, care transitions, medication management, and more.\n\nThe Rock Pointe Office, in particular, offers most of the main services associated with this organization (unlike the Post Street Office).",
+        address="1222 N. Post Street Spokane, WA 99201",
+        phoneNumber="509-458-2509",
+        email="",
+        website="https://www.altcew.org/",
+        category_id=1,
+        lon=-117.423170,
+        lat=47.668980,
+        img="https://www.altcew.org/wp-content/uploads/sites/24/2020/05/ALTCEW-building-exterior-Web-Page-scaled.jpg",
+    )
     db.session.add(reasource5)
 
     db.session.commit()
     return
-
 
 
 def seed_applications():
@@ -144,7 +150,7 @@ def seed_applications():
         "Empowerment Center for the Disabled",
         "Healing Hearts Refugee Aid",
         "Veterans Support Network",
-        "Recovery Road Addiction Center"
+        "Recovery Road Addiction Center",
     ]
 
     descriptions = [
@@ -152,7 +158,7 @@ def seed_applications():
         "Offering programs and resources to empower people with disabilities.",
         "Assisting refugees and asylum seekers with resettlement and integration.",
         "Providing counseling, job placement, and other support for veterans.",
-        "Offering rehabilitation programs and counseling for recovering addicts."
+        "Offering rehabilitation programs and counseling for recovering addicts.",
     ]
 
     addresses = [
@@ -160,7 +166,7 @@ def seed_applications():
         "456 Empowerment Street, Townsville, USA",
         "789 Refugee Road, Settlement City, USA",
         "101 Veteran Avenue, Service Town, USA",
-        "202 Recovery Road, Healing City, USA"
+        "202 Recovery Road, Healing City, USA",
     ]
 
     phone_numbers = [
@@ -168,7 +174,7 @@ def seed_applications():
         "234-567-8901",
         "345-678-9012",
         "456-789-0123",
-        "567-890-1234"
+        "567-890-1234",
     ]
 
     emails = [
@@ -176,7 +182,7 @@ def seed_applications():
         "info@empowermentcenter.org",
         "info@healinghearts.org",
         "info@veteranssupport.org",
-        "info@recoveryroad.org"
+        "info@recoveryroad.org",
     ]
 
     websites = [
@@ -184,7 +190,7 @@ def seed_applications():
         "http://www.empowermentcenter.org",
         "http://www.healinghearts.org",
         "http://www.veteranssupport.org",
-        "http://www.recoveryroad.org"
+        "http://www.recoveryroad.org",
     ]
 
     # Seed 5 applications
@@ -197,13 +203,15 @@ def seed_applications():
         website = random.choice(websites)
         category = random.choice(categories)
 
-        application = Application(organization=organization,
-                                  description=description,
-                                  address=address,
-                                  phoneNumber=phone_number,
-                                  email=email,
-                                  website=website,
-                                  category=category)
+        application = Application(
+            organization=organization,
+            description=description,
+            address=address,
+            phoneNumber=phone_number,
+            email=email,
+            website=website,
+            category=category,
+        )
         db.session.add(application)
 
     db.session.commit()
