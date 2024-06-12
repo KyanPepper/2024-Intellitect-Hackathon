@@ -99,8 +99,6 @@ def getapplications():
         })
     return jsonify(applications_list), 200
 
-
-
 #approve application logic
 @app.route("/approveapplication/<id>", methods=["POST"])
 def approveapplication(id):
